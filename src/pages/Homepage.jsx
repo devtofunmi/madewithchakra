@@ -45,12 +45,11 @@ const Homepage = () => {
           mt={"10px"}
           color={"black"}
           p={"30px"}
-          leftIcon={<BsGithub />}
           _hover={{
             bg: "#4cbf87",
           }}
         >
-          Login with Github
+          Submit Projects
         </Button>
       </Flex>
     </>
