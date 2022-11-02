@@ -1,5 +1,6 @@
 import React from "react";
-
+import { BsGithub } from "react-icons/bs";
+import { GiLoveMystery } from "react-icons/gi";
 import { Flex, Button, Box, Text } from "@chakra-ui/react";
 
 const Homepage = () => {
@@ -10,7 +11,15 @@ const Homepage = () => {
           MadeWithChakra
         </Text>
         <Box>
-          <Button color={"black"}>Sponsor</Button>
+          <Button
+            color={"black"}
+            leftIcon={<GiLoveMystery />}
+            _hover={{
+              bg: "#4cbf87",
+            }}
+          >
+            Sponsor
+          </Button>
         </Box>
       </Flex>
       <Flex
@@ -31,8 +40,17 @@ const Homepage = () => {
           quaerat praesentium architecto voluptas quisquam, voluptatem fuga
           numquam eaque voluptatibus.
         </Text>
-        <Button borderRadius={"10px"} mt={"10px"} color={"black"} p={"30px"}>
-          Get Started
+        <Button
+          borderRadius={"10px"}
+          mt={"10px"}
+          color={"black"}
+          p={"30px"}
+          leftIcon={<BsGithub />}
+          _hover={{
+            bg: "#4cbf87",
+          }}
+        >
+          Login with Github
         </Button>
       </Flex>
     </>
