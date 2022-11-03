@@ -60,6 +60,7 @@ const SubmitProject = ({ isOpen, closePopup }) => {
               }}
             />
             <Input
+              mt={"15px"}
               w={["300px", "400px"]}
               placeholder="Project url"
               onChange={(e) => {
@@ -83,7 +84,7 @@ const SubmitProject = ({ isOpen, closePopup }) => {
               onClick={() => {
                 handleSubmit();
               }}
-              disabled={!title || !content}
+              disabled={!projectName || !url || !description}
             >
               Submit
             </Button>
