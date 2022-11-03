@@ -3,8 +3,9 @@ import React, { useRef, useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 
 const SubmitProject = ({ isOpen, closePopup }) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [projectName, setProjectName] = useState("");
+  const [url, setUrl] = useState("");
+  const [description, setDescription] = useState("");
 
   return (
     <>
@@ -36,7 +37,7 @@ const SubmitProject = ({ isOpen, closePopup }) => {
         >
           <Flex align={"center"} justify={"space-between"} w={"100%"}>
             <Text fontSize={"1.5rem"} onClick={() => setShowPopup(true)}>
-              Add New Note
+              Add Project
             </Text>
             <Button
               bg={"blue.400"}
@@ -53,17 +54,24 @@ const SubmitProject = ({ isOpen, closePopup }) => {
           <Box w={["300px", "400px"]} mt={"50px"}>
             <Input
               w={["300px", "400px"]}
-              placeholder="Title"
+              placeholder="Project Name"
               onChange={(e) => {
-                setTitle(e.target.value);
+                setProjectName(e.target.value);
+              }}
+            />
+            <Input
+              w={["300px", "400px"]}
+              placeholder="Project url"
+              onChange={(e) => {
+                setUrl(e.target.value);
               }}
             />
             <Textarea
               mt={"15px"}
-              placeholder="Enter note"
+              placeholder="description"
               h={"150px"}
               onChange={(e) => {
-                setContent(e.target.value);
+                setDescription(e.target.value);
               }}
             />
             <Button
