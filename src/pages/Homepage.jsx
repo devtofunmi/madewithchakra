@@ -5,10 +5,6 @@ import SubmitProject from "../components/SubmitProject";
 
 const Homepage = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-  const handlePopup = () => {
-    setIsOpen(!isOpen);
-  };
   const closePopup = () => {
     setShowPopup(false);
   };
