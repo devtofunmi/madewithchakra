@@ -1,21 +1,20 @@
 import React, { useState } from "react";
-import { BsGithub } from "react-icons/bs";
 import { GiLoveMystery } from "react-icons/gi";
 import { Flex, Button, Box, Text } from "@chakra-ui/react";
-import AddNote from "../components/AddNote";
+import SubmitProject from "../components/SubmitProject";
 
 const Homepage = () => {
-  const [showAddNewNotePopup, setShowAddNewNotePopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const handlePopup = () => {
     setIsOpen(!isOpen);
   };
   const closePopup = () => {
-    setShowAddNewNotePopup(false);
+    setShowPopup(false);
   };
   return (
     <>
-      <AddNote isOpen={showAddNewNotePopup} closePopup={closePopup} />
+      <SubmitProject isOpen={showPopup} closePopup={closePopup} />
       <Flex justifyContent={"space-between"} mx={"50px"} pt={"20px"}>
         <Text fontSize={"30px"} fontFamily={"Roboto"}>
           MadeWithChakra
@@ -58,7 +57,7 @@ const Homepage = () => {
           _hover={{
             bg: "#4cbf87",
           }}
-          onClick={() => setShowAddNewNotePopup(true)}
+          onClick={() => setShowPopup(true)}
         >
           Submit Projects
         </Button>
