@@ -39,7 +39,7 @@ const Homepage = () => {
         <Text fontSize={"60px"} fontFamily={"Roboto"}>
           Showcase your Projects made with Chakra-ui
         </Text>
-        <Text mt={"20px"}>
+        <Text mt={["15px", "20px"]}>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad illum
           quia nam possimus tenetur autem est nostrum doloremque maiores ipsum
           quaerat praesentium architecto voluptas quisquam, voluptatem fuga
@@ -47,7 +47,7 @@ const Homepage = () => {
         </Text>
         <Button
           borderRadius={"10px"}
-          mt={"10px"}
+          mt={"20px"}
           color={"black"}
           p={"30px"}
           _hover={{
