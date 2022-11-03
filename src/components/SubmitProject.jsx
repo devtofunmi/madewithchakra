@@ -40,7 +40,7 @@ const SubmitProject = ({ isOpen, closePopup }) => {
               Add Project
             </Text>
             <Button
-              bg={"blue.400"}
+              bg={"#4cbf87"}
               _hover={{
                 backgroundColor: "rgba(#181819, 0.2)",
               }}
@@ -75,9 +75,10 @@ const SubmitProject = ({ isOpen, closePopup }) => {
                 setDescription(e.target.value);
               }}
             />
+
             <Button
               mt={"20px"}
-              bg={"blue.400"}
+              bg={"#4cbf87"}
               _hover={{
                 backgroundColor: "rgba(#181819, 0.2)",
               }}
