@@ -2,10 +2,14 @@ import { Box, Button, Input, Textarea, Text, Flex } from "@chakra-ui/react";
 import React, { useRef, useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 
-const SubmitProject = ({ isOpen, closePopup }) => {
+const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
   const [projectName, setProjectName] = useState("");
   const [url, setUrl] = useState("");
+  const [twitterHandle, setTwitterHandle] = useState("");
   const [description, setDescription] = useState("");
+  const handleSubmit = () => {
+    addNewProject(projectName, url, twitterHandle, description);
+  };
 
   return (
     <>
@@ -67,6 +71,14 @@ const SubmitProject = ({ isOpen, closePopup }) => {
                 setUrl(e.target.value);
               }}
             />
+            <Input
+              mt={"15px"}
+              w={["300px", "400px"]}
+              placeholder="Your Twitter handle"
+              onChange={(e) => {
+                setTwitterHandle(e.target.value);
+              }}
+            />
             <Textarea
               mt={"15px"}
               placeholder="description"
@@ -85,7 +97,7 @@ const SubmitProject = ({ isOpen, closePopup }) => {
               onClick={() => {
                 handleSubmit();
               }}
-              disabled={!projectName || !url || !description}
+              // disabled={!projectName || !url || !description || twitterHandle}
             >
               Submit
             </Button>
