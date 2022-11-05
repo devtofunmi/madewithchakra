@@ -1,12 +1,22 @@
 import React, { useState } from "react";
 import { GiLoveMystery } from "react-icons/gi";
-import { Flex, Button, Box, Text } from "@chakra-ui/react";
+import { Flex, Button, Box, Text, useToast } from "@chakra-ui/react";
 import SubmitProject from "../components/SubmitProject";
 
 const Homepage = () => {
   const [showPopup, setShowPopup] = useState(false);
   const closePopup = () => {
     setShowPopup(false);
+  };
+  const [project, setProject] = useState([]);
+  const toast = useToast();
+  const showError = (message) => {
+    toast({
+      description: message,
+      status: "error",
+      duration: 1500,
+      isClosable: true,
+    });
   };
   const addNewProject = (projectName, url, twitterHandle, description) => {};
   return (
