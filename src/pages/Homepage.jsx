@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { GiLoveMystery } from "react-icons/gi";
 import { Flex, Button, Box, Text, useToast } from "@chakra-ui/react";
 import SubmitProject from "../components/SubmitProject";
+import ProjectCard from "../components/ProjectCard";
 
 const Homepage = () => {
   const [showPopup, setShowPopup] = useState(false);
@@ -24,6 +25,16 @@ const Homepage = () => {
       showError("enter project name");
     } else if (!url) {
       showError("enter project url");
+    } else {
+      const userproject = {
+        id: project.length + 1,
+        projectName,
+        url,
+        twitterHandle,
+        description,
+      };
+      setProject([...project, userproject]);
+      console.log(project);
     }
   };
   return (
@@ -81,6 +92,14 @@ const Homepage = () => {
         >
           Submit Projects
         </Button>
+        {/* {project.map((project) => {
+          <ProjectCard
+            projectName={project.projectName}
+            url={project.url}
+            twitterHandle={project.twitterHandle}
+            description={project.description}
+          />;
+        })} */}
       </Flex>
     </>
   );
