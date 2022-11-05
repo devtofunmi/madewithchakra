@@ -8,16 +8,21 @@ const Homepage = () => {
   const closePopup = () => {
     setShowPopup(false);
   };
+  const addNewProject = (projectName, url, twitterHandle, description) => {};
   return (
     <>
-      <SubmitProject isOpen={showPopup} closePopup={closePopup} />
+      <SubmitProject
+        isOpen={showPopup}
+        closePopup={closePopup}
+        addNewProject={addNewProject}
+      />
       <Flex justifyContent={"space-between"} mx={"50px"} pt={"20px"}>
         <Text fontSize={"30px"} fontFamily={"Roboto"}>
           MadeWithChakra
         </Text>
         <Box>
           <Button
-            color={"black"}
+            color={"white"}
             leftIcon={<GiLoveMystery />}
             _hover={{
               bg: "#4cbf87",
@@ -48,7 +53,7 @@ const Homepage = () => {
         <Button
           borderRadius={"10px"}
           mt={"20px"}
-          color={"black"}
+          color={"white"}
           p={"30px"}
           _hover={{
             bg: "#4cbf87",
