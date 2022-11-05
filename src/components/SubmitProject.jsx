@@ -1,5 +1,5 @@
 import { Box, Button, Input, Textarea, Text, Flex } from "@chakra-ui/react";
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { MdOutlineClose } from "react-icons/md";
 
 const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
