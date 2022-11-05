@@ -9,6 +9,7 @@ const Homepage = () => {
     setShowPopup(false);
   };
   const [project, setProject] = useState([]);
+
   const toast = useToast();
   const showError = (message) => {
     toast({
@@ -18,7 +19,11 @@ const Homepage = () => {
       isClosable: true,
     });
   };
-  const addNewProject = (projectName, url, twitterHandle, description) => {};
+  const addNewProject = (projectName, url, twitterHandle, description) => {
+    if(!projectName){
+      showError('enter project')
+    }
+  };
   return (
     <>
       <SubmitProject
