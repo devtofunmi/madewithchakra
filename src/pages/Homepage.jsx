@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { GiLoveMystery } from "react-icons/gi";
-import { Flex, Button, Box, Text, useToast } from "@chakra-ui/react";
+import { Flex, Button, Box, Text, useToast, Center } from "@chakra-ui/react";
 import SubmitProject from "../components/SubmitProject";
 import ProjectCard from "../components/ProjectCard";
 
@@ -98,14 +98,22 @@ const Homepage = () => {
         >
           Submit Projects
         </Button>
-        {/* {project.map((project) => {
-          <ProjectCard
-            projectName={project.projectName}
-            url={project.url}
-            twitterHandle={project.twitterHandle}
-            description={project.description}
-          />;
-        })} */}
+        <Center>
+          <Text mt={"20px"} fontSize={"60px"}>
+            Project
+          </Text>
+        </Center>
+        <Box>
+          {project.map((project, id) => {
+            <ProjectCard
+              key={id}
+              projectName={project.projectName}
+              url={project.url}
+              twitterHandle={project.twitterHandle}
+              description={project.description}
+            />;
+          })}
+        </Box>
       </Flex>
     </>
   );
