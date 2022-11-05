@@ -20,8 +20,8 @@ const Homepage = () => {
     });
   };
   const addNewProject = (projectName, url, twitterHandle, description) => {
-    if(!projectName){
-      showError('enter project')
+    if (!projectName) {
+      showError("enter project");
     }
   };
   return (
@@ -39,6 +39,7 @@ const Homepage = () => {
           <Button
             color={"white"}
             leftIcon={<GiLoveMystery />}
+            bg={"teal"}
             _hover={{
               bg: "#4cbf87",
             }}
@@ -70,6 +71,7 @@ const Homepage = () => {
           mt={"20px"}
           color={"white"}
           p={"30px"}
+          bg={"teal"}
           _hover={{
             bg: "#4cbf87",
           }}
