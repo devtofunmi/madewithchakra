@@ -21,7 +21,9 @@ const Homepage = () => {
   };
   const addNewProject = (projectName, url, twitterHandle, description) => {
     if (!projectName) {
-      showError("enter project");
+      showError("enter project name");
+    } else if (!url) {
+      showError("enter project url");
     }
   };
   return (
