@@ -34,6 +34,12 @@ const Homepage = () => {
         description,
       };
       setProject([...project, userproject]);
+      toast({
+        description: "project added successfully",
+        status: "success",
+        duration: 1500,
+        isClosable: true,
+      });
       console.log(project);
     }
   };
