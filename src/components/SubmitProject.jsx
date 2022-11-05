@@ -55,6 +55,10 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               <MdOutlineClose />
             </Button>
           </Flex>
+          <Text mt={"20px"}>
+            Showcases require moderator approval, so please be patient if your
+            post doesn’t show up immediately
+          </Text>
           <Box w={["300px", "400px"]} mt={"50px"}>
             <Input
               w={["300px", "400px"]}
