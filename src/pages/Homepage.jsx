@@ -26,14 +26,14 @@ const Homepage = () => {
     } else if (!url) {
       showError("enter project url");
     } else {
-      const userproject = {
+      const showCaseProject = {
         id: project.length + 1,
         projectName,
         url,
         twitterHandle,
         description,
       };
-      setProject([...project, userproject]);
+      setProject([...project, showCaseProject]);
       toast({
         description: "project added successfully",
         status: "success",
@@ -105,13 +105,18 @@ const Homepage = () => {
         </Center>
         <Box>
           {project.map((project, id) => {
-            <ProjectCard
-              key={id}
-              projectName={project.projectName}
-              url={project.url}
-              twitterHandle={project.twitterHandle}
-              description={project.description}
-            />;
+            <Box>
+              <Text>{project.projectName}</Text>
+              <Text>{project.twitterHandle}</Text>
+              <Text>{project.description}</Text>
+            </Box>;
+            // <ProjectCard
+            //   key={id}
+            //   projectName={project.projectName}
+            //   url={project.url}
+            //   twitterHandle={project.twitterHandle}
+            //   description={project.description}
+            // />;
           })}
         </Box>
       </Flex>
