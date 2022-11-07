@@ -82,7 +82,6 @@ const Homepage = () => {
         projectName,
         url,
         twitterHandle,
-        description,
       };
       setProject([...project, showCaseProject]);
       toast({
@@ -169,7 +168,6 @@ const Homepage = () => {
             projectName={project.projectName}
             url={project.url}
             twitterHandle={project.twitterHandle}
-            description={project.description}
           />
         ))}
       </Flex>
