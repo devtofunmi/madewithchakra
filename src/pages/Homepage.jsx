@@ -110,22 +110,17 @@ const Homepage = () => {
             Project
           </Text>
         </Center>
-        <Box>
-          {project.map((project, id) => {
-            <Box>
-              <Text>{project.projectName}</Text>
-              <Text>{project.twitterHandle}</Text>
-              <Text>{project.description}</Text>
-            </Box>;
-            // <ProjectCard
-            //   key={id}
-            //   projectName={project.projectName}
-            //   url={project.url}
-            //   twitterHandle={project.twitterHandle}
-            //   description={project.description}
-            // />;
-          })}
-        </Box>
+        <Flex gap={"10px"}>
+          {project.map((project, id) => (
+            <ProjectCard
+              key={id}
+              projectName={project.projectName}
+              url={project.url}
+              twitterHandle={project.twitterHandle}
+              description={project.description}
+            />
+          ))}
+        </Flex>
       </Flex>
     </>
   );
