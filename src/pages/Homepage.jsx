@@ -12,10 +12,45 @@ const Homepage = () => {
   const [project, setProject] = useState([
     {
       description:
-        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum      quaerat praesentium architecto voluptas quisquam, voluptatem fuga",
+        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores",
       projectName: "devtofunmi",
       twitterHandle: "codebrea_er",
       url: "https://devtofunmi.netlify.app",
+    },
+    {
+      description:
+        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
+      projectName: "devtofunmi",
+      twitterHandle: "codebrea_er",
+      url: "https://devtofunmi.netlify.app",
+    },
+    {
+      description:
+        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
+      projectName: "StayBnb",
+      twitterHandle: "codebrea_er",
+      url: "https://bnnnb.netlify.app",
+    },
+    {
+      description:
+        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores",
+      projectName: "fetiino",
+      twitterHandle: "codebrea_er",
+      url: "https://fetiino.netlify.app",
+    },
+    {
+      description:
+        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
+      projectName: "crypto",
+      twitterHandle: "codebrea_er",
+      url: "https://cryppto.netlify.app",
+    },
+    {
+      description:
+        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
+      projectName: "Gpt3",
+      twitterHandle: "codebrea_er",
+      url: "https://gppt.netlify.app",
     },
   ]);
 
