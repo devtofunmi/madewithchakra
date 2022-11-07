@@ -142,7 +142,7 @@ const Homepage = () => {
           Submit Projects
         </Button>
         <Center>
-          <Text mt={"30px"} fontSize={"60px"} fontFamily={"Roboto"}>
+          <Text mt={"50px"} fontSize={"60px"} fontFamily={"Roboto"}>
             Project
           </Text>
         </Center>
