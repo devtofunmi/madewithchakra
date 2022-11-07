@@ -1,5 +1,6 @@
-import { Box, Text } from "@chakra-ui/react";
+import { Box, Button, Link, Text } from "@chakra-ui/react";
 import React from "react";
+import { BsTwitter } from "react-icons/bs";
 
 const ProjectCard = ({ projectName, url, twitterHandle, description }) => {
   return (
@@ -8,9 +9,25 @@ const ProjectCard = ({ projectName, url, twitterHandle, description }) => {
         <iframe width={"100%"} src={url}></iframe>
       </Box>
       <Box p={"10px"}>
-        <Text fs={"30px"}>{projectName}</Text>
-        <Text>{twitterHandle}</Text>
-        <Text>{description}</Text>
+        <Link href={url} target={"_blank"} textDecor={"none"}>
+          <Box fontSize={"30px"} fontFamily={"Roboto"}>
+            <Text>{projectName}</Text>
+          </Box>
+        </Link>
+
+        <Button
+          bg={"transparent"}
+          leftIcon={<BsTwitter />}
+          _hover={{
+            bg: "transparent",
+          }}
+        >
+          {/* <Link href="https://twitter.com/{twitterHandle}">
+            {twitterHandle}
+          </Link> */}
+          <Text>{twitterHandle}</Text>
+        </Button>
+        {/* <Text>{description}</Text> */}
       </Box>
     </Box>
   );
