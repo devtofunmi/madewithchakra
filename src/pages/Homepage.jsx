@@ -9,6 +9,7 @@ import {
   Center,
   Img,
   Link,
+  Tooltip,
 } from "@chakra-ui/react";
 import SubmitProject from "../components/SubmitProject";
 import ProjectCard from "../components/ProjectCard";
@@ -112,14 +113,20 @@ const Homepage = () => {
             <Img w={"300px"} src={logo} />
           </Box>
           <Box>
-            <Link
-              fontSize={"30px"}
-              href={"https://twitter.com/madewithchakra"}
-              target={"_blank"}
-              textDecor={"none"}
+            <Tooltip
+              label="follow madewithchakra on twitter"
+              aria-label="A tooltip"
+              fontSize="md"
             >
-              <AiFillTwitterCircle />
-            </Link>
+              <Link
+                fontSize={"30px"}
+                href={"https://twitter.com/madewithchakra"}
+                target={"_blank"}
+                textDecor={"none"}
+              >
+                <AiFillTwitterCircle />
+              </Link>
+            </Tooltip>
           </Box>
         </Flex>
         <Box
