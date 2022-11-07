@@ -171,6 +171,9 @@ const Homepage = () => {
           />
         ))}
       </Flex>
+      <Center pb={"30px"}>
+        <Text>Proudly made with Chakra</Text>
+      </Center>
     </>
   );
 };
