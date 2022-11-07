@@ -6,9 +6,9 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
   const [projectName, setProjectName] = useState("");
   const [url, setUrl] = useState("");
   const [twitterHandle, setTwitterHandle] = useState("");
-  const [description, setDescription] = useState("");
+
   const handleSubmit = () => {
-    addNewProject(projectName, url, twitterHandle, description);
+    addNewProject(projectName, url, twitterHandle);
   };
 
   return (
@@ -44,7 +44,7 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               Add Project
             </Text>
             <Button
-              bg={"#4cbf87"}
+              bg={"teal"}
               _hover={{
                 backgroundColor: "rgba(#181819, 0.2)",
               }}
@@ -83,18 +83,10 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
                 setTwitterHandle(e.target.value);
               }}
             />
-            <Textarea
-              mt={"15px"}
-              placeholder="description"
-              h={"150px"}
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-            />
 
             <Button
               mt={"20px"}
-              bg={"#4cbf87"}
+              bg={"teal"}
               _hover={{
                 backgroundColor: "rgba(#181819, 0.2)",
               }}
