@@ -2,7 +2,7 @@ import { Box, Button, Link, Text } from "@chakra-ui/react";
 import React from "react";
 import { BsTwitter } from "react-icons/bs";
 
-const ProjectCard = ({ projectName, url, twitterHandle, description }) => {
+const ProjectCard = ({ projectName, url, twitterHandle }) => {
   return (
     <Box width={"400px"} borderRadius={"10px"} position={"relative"}>
       <Box>
