@@ -110,7 +110,7 @@ const Homepage = () => {
             Project
           </Text>
         </Center>
-        <Flex gap={"10px"}>
+        <Flex gap={"10px"} flexWrap={"wrap"}>
           {project.map((project, id) => (
             <ProjectCard
               key={id}
