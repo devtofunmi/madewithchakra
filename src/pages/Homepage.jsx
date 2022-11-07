@@ -155,7 +155,7 @@ const Homepage = () => {
           </Button>
         </Box>
       </Box>
-      <Center>
+      <Center mt={["0px", "130px", "0px"]}>
         <Text fontSize={"60px"} fontFamily={"Roboto"}>
           Project
         </Text>
