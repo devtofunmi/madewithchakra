@@ -146,17 +146,23 @@ const Homepage = () => {
             Project
           </Text>
         </Center>
-        <Flex mt={"10px"} gap={"20px"} flexWrap={"wrap"}>
-          {project.map((project, id) => (
-            <ProjectCard
-              key={id}
-              projectName={project.projectName}
-              url={project.url}
-              twitterHandle={project.twitterHandle}
-              description={project.description}
-            />
-          ))}
-        </Flex>
+      </Flex>
+      <Flex
+        pb={"50px"}
+        mt={"10px"}
+        gap={"50px"}
+        flexWrap={"wrap"}
+        justify={"center"}
+      >
+        {project.map((project, id) => (
+          <ProjectCard
+            key={id}
+            projectName={project.projectName}
+            url={project.url}
+            twitterHandle={project.twitterHandle}
+            description={project.description}
+          />
+        ))}
       </Flex>
     </>
   );
