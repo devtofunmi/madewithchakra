@@ -4,13 +4,31 @@ import { BsTwitter } from "react-icons/bs";
 
 const ProjectCard = ({ projectName, url, twitterHandle, description }) => {
   return (
-    <Box width={["90%", "45%", "30%"]} borderRadius={"10px"} bg={"#202225"}>
+    <Box width={"400px"} borderRadius={"10px"} position={"relative"}>
       <Box>
-        <iframe width={"100%"} src={url}></iframe>
+        <iframe
+          scrolling="no"
+          height="200"
+          allowFullScreen={"true"}
+          width={"100%"}
+          src={url}
+        ></iframe>
       </Box>
-      <Box p={"10px"}>
+      <Box
+        position={"absolute"}
+        top={"0px"}
+        textAlign={"center"}
+        bg={"rgba(0,0,0,0.75)"}
+        w={"100%"}
+        h={"206px"}
+        borderBottomRadius={"10px"}
+        opacity={0}
+        _hover={{
+          opacity: "1",
+        }}
+      >
         <Link href={url} target={"_blank"} textDecor={"none"}>
-          <Box fontSize={"30px"} fontFamily={"Roboto"}>
+          <Box pt={"110px"} fontSize={"30px"} fontFamily={"Roboto"}>
             <Text>{projectName}</Text>
           </Box>
         </Link>
@@ -22,12 +40,10 @@ const ProjectCard = ({ projectName, url, twitterHandle, description }) => {
             bg: "transparent",
           }}
         >
-          {/* <Link href="https://twitter.com/{twitterHandle}">
+          <Link href={`https://twitter.com/${twitterHandle}`} target="_blank">
             {twitterHandle}
-          </Link> */}
-          <Text>{twitterHandle}</Text>
+          </Link>
         </Button>
-        {/* <Text>{description}</Text> */}
       </Box>
     </Box>
   );
