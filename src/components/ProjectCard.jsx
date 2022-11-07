@@ -4,7 +4,11 @@ import { BsTwitter } from "react-icons/bs";
 
 const ProjectCard = ({ projectName, url, twitterHandle }) => {
   return (
-    <Box width={"400px"} borderRadius={"10px"} position={"relative"}>
+    <Box
+      width={["350px", "400px", "400px"]}
+      borderRadius={"10px"}
+      position={"relative"}
+    >
       <Box>
         <iframe
           scrolling="no"
