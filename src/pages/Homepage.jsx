@@ -13,7 +13,7 @@ import {
 import SubmitProject from "../components/SubmitProject";
 import ProjectCard from "../components/ProjectCard";
 import logo from "../assets/logo.png";
-import { BsTwitter } from "react-icons/bs";
+import { AiFillTwitterCircle } from "react-icons/ai";
 const Homepage = () => {
   const [showPopup, setShowPopup] = useState(false);
   const closePopup = () => {
@@ -73,7 +73,7 @@ const Homepage = () => {
       isClosable: true,
     });
   };
-  const addNewProject = (projectName, url, twitterHandle, description) => {
+  const addNewProject = (projectName, url, twitterHandle) => {
     if (!projectName) {
       showError("enter project name");
     } else if (!url) {
@@ -118,7 +118,7 @@ const Homepage = () => {
               target={"_blank"}
               textDecor={"none"}
             >
-              <BsTwitter />
+              <AiFillTwitterCircle />
             </Link>
           </Box>
         </Flex>
