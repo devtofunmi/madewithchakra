@@ -9,14 +9,7 @@ const Homepage = () => {
   const closePopup = () => {
     setShowPopup(false);
   };
-  const [project, setProject] = useState([
-    {
-      description: "sssssss",
-      projectName: "showcase",
-      twitterHandle: "sssss",
-      url: "ssss",
-    },
-  ]);
+  const [project, setProject] = useState([]);
 
   const toast = useToast();
   const showError = (message) => {
