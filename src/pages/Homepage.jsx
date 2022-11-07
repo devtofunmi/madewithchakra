@@ -8,10 +8,12 @@ import {
   useToast,
   Center,
   Img,
+  Link,
 } from "@chakra-ui/react";
 import SubmitProject from "../components/SubmitProject";
 import ProjectCard from "../components/ProjectCard";
 import logo from "../assets/logo.png";
+import { BsTwitter } from "react-icons/bs";
 const Homepage = () => {
   const [showPopup, setShowPopup] = useState(false);
   const closePopup = () => {
@@ -101,19 +103,23 @@ const Homepage = () => {
         addNewProject={addNewProject}
       />
       <Box h={"100vh"}>
-        <Flex justifyContent={"space-between"}>
-          <Img w={"300px"} src={logo} />
+        <Flex
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          mx={"20px"}
+        >
           <Box>
-            {/* <Button
-            color={"white"}
-            leftIcon={<GiLoveMystery />}
-            bg={"teal"}
-            _hover={{
-              bg: "#4cbf87",
-            }}
-          >
-            Sponsor
-          </Button> */}
+            <Img w={"300px"} src={logo} />
+          </Box>
+          <Box>
+            <Link
+              fontSize={"30px"}
+              href={"https://twitter.com/madewithchakra"}
+              target={"_blank"}
+              textDecor={"none"}
+            >
+              <BsTwitter />
+            </Link>
           </Box>
         </Flex>
         <Box
