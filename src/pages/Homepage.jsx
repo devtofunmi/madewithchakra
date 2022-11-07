@@ -9,7 +9,15 @@ const Homepage = () => {
   const closePopup = () => {
     setShowPopup(false);
   };
-  const [project, setProject] = useState([]);
+  const [project, setProject] = useState([
+    {
+      description:
+        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum      quaerat praesentium architecto voluptas quisquam, voluptatem fuga",
+      projectName: "devtofunmi",
+      twitterHandle: "codebrea_er",
+      url: "https://devtofunmi.netlify.app",
+    },
+  ]);
 
   const toast = useToast();
   const showError = (message) => {
@@ -99,11 +107,11 @@ const Homepage = () => {
           Submit Projects
         </Button>
         <Center>
-          <Text mt={"20px"} fontSize={"60px"} fontFamily={"Roboto"}>
+          <Text mt={"30px"} fontSize={"60px"} fontFamily={"Roboto"}>
             Project
           </Text>
         </Center>
-        <Flex gap={"10px"} flexWrap={"wrap"}>
+        <Flex mt={"10px"} gap={"20px"} flexWrap={"wrap"}>
           {project.map((project, id) => (
             <ProjectCard
               key={id}
