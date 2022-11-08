@@ -70,7 +70,7 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
             <Input
               mt={"15px"}
               w={["300px", "400px"]}
-              placeholder="Project url"
+              placeholder="Project link  https://devtofunmi.netlify.app"
               onChange={(e) => {
                 setUrl(e.target.value);
               }}
