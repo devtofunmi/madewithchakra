@@ -142,10 +142,11 @@ const Homepage = () => {
             Showcase your Projects made with Chakra-ui
           </Text>
           <Text mt={["15px", "20px"]}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad illum
-            quia nam possimus tenetur autem est nostrum doloremque maiores ipsum
-            quaerat praesentium architecto voluptas quisquam, voluptatem fuga
-            numquam eaque voluptatibus.
+            Chakra UI is a simple, modular and accessible component library that
+            gives you the building blocks you need to build your React
+            applications,With madewithchakra, you can showcase your project and
+            explore what's possible with Chakra_ui and get inspired for your
+            next project.
           </Text>
           <Button
             borderRadius={"10px"}
