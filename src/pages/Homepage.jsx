@@ -157,14 +157,14 @@ const Homepage = () => {
         flexWrap={"wrap"}
         justify={"center"}
       >
-        {/* {project.map((project, id) => (
+        {project.map((project, id) => (
           <ProjectCard
             key={id}
             projectName={project.projectName}
             link={project.link}
             twitterHandle={project.twitterHandle}
           />
-        ))} */}
+        ))}
       </Flex>
       <Center pb={"30px"}>
         <Text>Proudly made with Chakra</Text>
