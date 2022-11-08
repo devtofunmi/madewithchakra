@@ -15,7 +15,6 @@ import SubmitProject from "../components/SubmitProject";
 import ProjectCard from "../components/ProjectCard";
 import logo from "../assets/logo.png";
 import { AiFillTwitterCircle } from "react-icons/ai";
-import { SupabaseClient } from "@supabase/supabase-js";
 import { supabase } from "../../supabaseClient";
 
 const Homepage = () => {
@@ -23,50 +22,6 @@ const Homepage = () => {
   const closePopup = () => {
     setShowPopup(false);
   };
-  // const [project, setProject] = useState([
-  //   {
-  //     description:
-  //       "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores",
-  //     projectName: "devtofunmi",
-  //     twitterHandle: "codebrea_er",
-  //     link: "https://devtofunmi.netlify.app",
-  //   },
-  //   {
-  //     description:
-  //       "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
-  //     projectName: "devtofunmi",
-  //     twitterHandle: "codebrea_er",
-  //     link: "https://devtofunmi.netlify.app",
-  //   },
-  //   {
-  //     description:
-  //       "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
-  //     projectName: "StayBnb",
-  //     twitterHandle: "codebrea_er",
-  //     link: "https://bnnnb.netlify.app",
-  //   },
-  //   {
-  //     description:
-  //       "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores",
-  //     projectName: "fetiino",
-  //     twitterHandle: "codebrea_er",
-  //     link: "https://fetiino.netlify.app",
-  //   },
-  //   {
-  //     description:
-  //       "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
-  //     projectName: "crypto",
-  //     twitterHandle: "codebrea_er",
-  //     link: "https://cryppto.netlify.app",
-  //   },
-  //   {
-  //     description:
-  //       "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
-  //     projectName: "Gpt3",
-  //     twitterHandle: "codebrea_er",
-  //     link: "https://gppt.netlify.app",
-  //   },
-  // ]);
 
   const toast = useToast();
   const showError = (message) => {
@@ -86,7 +41,7 @@ const Homepage = () => {
           projectName: projectName,
           link: link,
           twitterHandle: twitterHandle,
-          isVerried: false,
+          isVerified: false,
         })
         .then((data) => {
           console.log(data);
@@ -97,14 +52,6 @@ const Homepage = () => {
           } else if (data.error) {
             showError(data.error.message);
           } else {
-            // const showCaseProject = {
-            //   id: project.length + 1,
-            //   projectName,
-            //   link,
-            //   twitterHandle,
-            //   isVerried: false,
-            // };
-            // setProject([...project, showCaseProject]);
             toast({
               description: "project added successfully",
               status: "success",
@@ -113,8 +60,8 @@ const Homepage = () => {
             });
           }
         });
-      project();
     };
+    project();
   };
   return (
     <>
