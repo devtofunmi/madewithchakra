@@ -10,13 +10,7 @@ const ProjectCard = ({ projectName, url, twitterHandle }) => {
       position={"relative"}
     >
       <Box>
-        <iframe
-          scrolling="no"
-          height="200"
-          allowFullScreen={"true"}
-          width={"100%"}
-          src={url}
-        ></iframe>
+        <iframe scrolling="no" height="200" width={"100%"} src={url}></iframe>
       </Box>
       <Box
         position={"absolute"}
