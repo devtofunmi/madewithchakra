@@ -4,11 +4,11 @@ import { MdOutlineClose } from "react-icons/md";
 
 const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
   const [projectName, setProjectName] = useState("");
-  const [url, setUrl] = useState("");
+  const [link, setLink] = useState("");
   const [twitterHandle, setTwitterHandle] = useState("");
 
   const handleSubmit = () => {
-    addNewProject(projectName, url, twitterHandle);
+    addNewProject(projectName, link, twitterHandle);
   };
 
   return (
@@ -72,7 +72,7 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               w={["300px", "400px"]}
               placeholder="Project link  https://devtofunmi.netlify.app"
               onChange={(e) => {
-                setUrl(e.target.value);
+                setLink(e.target.value);
               }}
             />
             <Input
