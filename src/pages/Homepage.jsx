@@ -26,42 +26,42 @@ const Homepage = () => {
         "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores",
       projectName: "devtofunmi",
       twitterHandle: "codebrea_er",
-      url: "https://devtofunmi.netlify.app",
+      link: "https://devtofunmi.netlify.app",
     },
     {
       description:
         "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
       projectName: "devtofunmi",
       twitterHandle: "codebrea_er",
-      url: "https://devtofunmi.netlify.app",
+      link: "https://devtofunmi.netlify.app",
     },
     {
       description:
         "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
       projectName: "StayBnb",
       twitterHandle: "codebrea_er",
-      url: "https://bnnnb.netlify.app",
+      link: "https://bnnnb.netlify.app",
     },
     {
       description:
         "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores",
       projectName: "fetiino",
       twitterHandle: "codebrea_er",
-      url: "https://fetiino.netlify.app",
+      link: "https://fetiino.netlify.app",
     },
     {
       description:
         "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
       projectName: "crypto",
       twitterHandle: "codebrea_er",
-      url: "https://cryppto.netlify.app",
+      link: "https://cryppto.netlify.app",
     },
     {
       description:
         "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
       projectName: "Gpt3",
       twitterHandle: "codebrea_er",
-      url: "https://gppt.netlify.app",
+      link: "https://gppt.netlify.app",
     },
   ]);
 
@@ -74,10 +74,10 @@ const Homepage = () => {
       isClosable: true,
     });
   };
-  const addNewProject = (projectName, url, twitterHandle) => {
+  const addNewProject = (projectName, link, twitterHandle) => {
     if (!projectName) {
       showError("enter project name");
-    } else if (!url) {
+    } else if (!link) {
       showError("enter project url");
     } else {
       const showCaseProject = {
@@ -181,7 +181,7 @@ const Homepage = () => {
           <ProjectCard
             key={id}
             projectName={project.projectName}
-            url={project.url}
+            link={project.link}
             twitterHandle={project.twitterHandle}
           />
         ))}
