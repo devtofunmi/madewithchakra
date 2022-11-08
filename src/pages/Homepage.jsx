@@ -144,7 +144,7 @@ const Homepage = () => {
           <Text mt={["15px", "20px"]}>
             Chakra UI is a simple, modular and accessible component library that
             gives you the building blocks you need to build your React
-            applications,With madewithchakra, you can showcase your project and
+            applications,with madewithchakra, you can showcase your project and
             explore what's possible with Chakra_ui and get inspired for your
             next project.
           </Text>
