@@ -37,7 +37,7 @@ const Homepage = () => {
   const addNewProject = (projectName, link, twitterHandle) => {
     const project = async () => {
       await supabase
-        .from("project")
+        .from("projects")
         .insert({
           projectName: projectName,
           link: link,
@@ -45,7 +45,6 @@ const Homepage = () => {
           isVerified: false,
         })
         .then((data) => {
-          console.log(data);
           if (!projectName) {
             showError("enter project name");
           } else if (!link) {
@@ -66,9 +65,8 @@ const Homepage = () => {
   };
 
   const getProjects = async () => {
-    const data = await supabase.from("project").select("*");
+    const data = await supabase.from("projects").select("*");
 
-    console.log(data);
     setProjects(data?.data);
   };
 
