@@ -85,6 +85,7 @@ const Homepage = () => {
         projectName,
         url,
         twitterHandle,
+        isVerried: false,
       };
       setProject([...project, showCaseProject]);
       toast({
@@ -93,7 +94,7 @@ const Homepage = () => {
         duration: 1500,
         isClosable: true,
       });
-      // console.log(project);
+      console.log(project);
     }
   };
   return (
