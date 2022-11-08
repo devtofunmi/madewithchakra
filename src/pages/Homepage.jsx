@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GiLoveMystery } from "react-icons/gi";
 import {
   Flex,
@@ -24,6 +24,7 @@ const Homepage = () => {
   };
 
   const toast = useToast();
+  const [project, setProject] = useState([]);
   const showError = (message) => {
     toast({
       description: message,
@@ -63,6 +64,19 @@ const Homepage = () => {
     };
     project();
   };
+
+  const getProject = async () => {
+    const data = await supabase
+      .from("project")
+      .select("projectName, link, twitterHandle, isVerified");
+
+    console.log(data);
+    setProject([data?.data]);
+  };
+
+  useEffect(() => {
+    getProject();
+  }, []);
   return (
     <>
       <SubmitProject
