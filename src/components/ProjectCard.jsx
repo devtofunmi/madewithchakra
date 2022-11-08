@@ -2,7 +2,7 @@ import { Box, Button, Link, Text } from "@chakra-ui/react";
 import React from "react";
 import { BsTwitter } from "react-icons/bs";
 
-const ProjectCard = ({ projectName, url, twitterHandle }) => {
+const ProjectCard = ({ projectName, link, twitterHandle }) => {
   return (
     <Box
       width={["350px", "400px", "400px"]}
@@ -10,7 +10,7 @@ const ProjectCard = ({ projectName, url, twitterHandle }) => {
       position={"relative"}
     >
       <Box>
-        <iframe scrolling="no" height="200" width={"100%"} src={url}></iframe>
+        <iframe scrolling="no" height="200" width={"100%"} src={link}></iframe>
       </Box>
       <Box
         position={"absolute"}
@@ -25,7 +25,7 @@ const ProjectCard = ({ projectName, url, twitterHandle }) => {
           opacity: "1",
         }}
       >
-        <Link href={url} target={"_blank"} textDecor={"none"}>
+        <Link href={link} target={"_blank"} textDecor={"none"}>
           <Box pt={"110px"} fontSize={"30px"} fontFamily={"Roboto"}>
             <Text>{projectName}</Text>
           </Box>
