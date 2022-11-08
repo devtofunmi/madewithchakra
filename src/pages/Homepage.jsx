@@ -163,7 +163,7 @@ const Homepage = () => {
           </Button>
         </Box>
       </Box>
-      <Center mt={["0px", "130px", "0px"]}>
+      <Center mt={["20px", "200px", "0px"]}>
         <Text fontSize={"60px"} fontFamily={"Roboto"}>
           Project
         </Text>
