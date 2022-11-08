@@ -24,7 +24,7 @@ const Homepage = () => {
   };
 
   const toast = useToast();
-  const [project, setProject] = useState([]);
+  const [projects, setProjects] = useState([]);
   const showError = (message) => {
     toast({
       description: message,
@@ -65,17 +65,15 @@ const Homepage = () => {
     project();
   };
 
-  const getProject = async () => {
-    const data = await supabase
-      .from("project")
-      .select("projectName, link, twitterHandle, isVerified");
+  const getProjects = async () => {
+    const data = await supabase.from("project").select("*");
 
     console.log(data);
-    setProject([data?.data]);
+    setProjects(data?.data);
   };
 
   useEffect(() => {
-    getProject();
+    getProjects();
   }, []);
   return (
     <>
@@ -157,14 +155,16 @@ const Homepage = () => {
         flexWrap={"wrap"}
         justify={"center"}
       >
-        {project.map((project, id) => (
-          <ProjectCard
-            key={id}
-            projectName={project.projectName}
-            link={project.link}
-            twitterHandle={project.twitterHandle}
-          />
-        ))}
+        {projects
+          .filter((p) => p.isVerified)
+          .map((project) => (
+            <ProjectCard
+              key={project.id}
+              projectName={project.projectName}
+              link={project.link}
+              twitterHandle={project.twitterHandle}
+            />
+          ))}
       </Flex>
       <Center pb={"30px"}>
         <Text>Proudly made with Chakra</Text>
