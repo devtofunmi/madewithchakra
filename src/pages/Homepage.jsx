@@ -93,7 +93,7 @@ const Homepage = () => {
         duration: 1500,
         isClosable: true,
       });
-      console.log(project);
+      // console.log(project);
     }
   };
   return (
