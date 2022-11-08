@@ -15,55 +15,58 @@ import SubmitProject from "../components/SubmitProject";
 import ProjectCard from "../components/ProjectCard";
 import logo from "../assets/logo.png";
 import { AiFillTwitterCircle } from "react-icons/ai";
+import { SupabaseClient } from "@supabase/supabase-js";
+import { supabase } from "../../supabaseClient";
+
 const Homepage = () => {
   const [showPopup, setShowPopup] = useState(false);
   const closePopup = () => {
     setShowPopup(false);
   };
-  const [project, setProject] = useState([
-    {
-      description:
-        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores",
-      projectName: "devtofunmi",
-      twitterHandle: "codebrea_er",
-      link: "https://devtofunmi.netlify.app",
-    },
-    {
-      description:
-        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
-      projectName: "devtofunmi",
-      twitterHandle: "codebrea_er",
-      link: "https://devtofunmi.netlify.app",
-    },
-    {
-      description:
-        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
-      projectName: "StayBnb",
-      twitterHandle: "codebrea_er",
-      link: "https://bnnnb.netlify.app",
-    },
-    {
-      description:
-        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores",
-      projectName: "fetiino",
-      twitterHandle: "codebrea_er",
-      link: "https://fetiino.netlify.app",
-    },
-    {
-      description:
-        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
-      projectName: "crypto",
-      twitterHandle: "codebrea_er",
-      link: "https://cryppto.netlify.app",
-    },
-    {
-      description:
-        "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
-      projectName: "Gpt3",
-      twitterHandle: "codebrea_er",
-      link: "https://gppt.netlify.app",
-    },
-  ]);
+  // const [project, setProject] = useState([
+  //   {
+  //     description:
+  //       "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores",
+  //     projectName: "devtofunmi",
+  //     twitterHandle: "codebrea_er",
+  //     link: "https://devtofunmi.netlify.app",
+  //   },
+  //   {
+  //     description:
+  //       "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
+  //     projectName: "devtofunmi",
+  //     twitterHandle: "codebrea_er",
+  //     link: "https://devtofunmi.netlify.app",
+  //   },
+  //   {
+  //     description:
+  //       "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
+  //     projectName: "StayBnb",
+  //     twitterHandle: "codebrea_er",
+  //     link: "https://bnnnb.netlify.app",
+  //   },
+  //   {
+  //     description:
+  //       "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores",
+  //     projectName: "fetiino",
+  //     twitterHandle: "codebrea_er",
+  //     link: "https://fetiino.netlify.app",
+  //   },
+  //   {
+  //     description:
+  //       "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
+  //     projectName: "crypto",
+  //     twitterHandle: "codebrea_er",
+  //     link: "https://cryppto.netlify.app",
+  //   },
+  //   {
+  //     description:
+  //       "adipisicing elit. Ad illum  quia nam possimus tenetur autem est nostrum doloremque maiores ipsum",
+  //     projectName: "Gpt3",
+  //     twitterHandle: "codebrea_er",
+  //     link: "https://gppt.netlify.app",
+  //   },
+  // ]);
 
   const toast = useToast();
   const showError = (message) => {
@@ -74,28 +77,44 @@ const Homepage = () => {
       isClosable: true,
     });
   };
+
   const addNewProject = (projectName, link, twitterHandle) => {
-    if (!projectName) {
-      showError("enter project name");
-    } else if (!link) {
-      showError("enter project url");
-    } else {
-      const showCaseProject = {
-        id: project.length + 1,
-        projectName,
-        url,
-        twitterHandle,
-        isVerried: false,
-      };
-      setProject([...project, showCaseProject]);
-      toast({
-        description: "project added successfully",
-        status: "success",
-        duration: 1500,
-        isClosable: true,
-      });
-      // console.log(project);
-    }
+    const project = async () => {
+      await supabase
+        .from("project")
+        .insert({
+          projectName: projectName,
+          link: link,
+          twitterHandle: twitterHandle,
+          isVerried: false,
+        })
+        .then((data) => {
+          console.log(data);
+          if (!projectName) {
+            showError("enter project name");
+          } else if (!link) {
+            showError("enter project url");
+          } else if (data.error) {
+            showError(data.error.message);
+          } else {
+            // const showCaseProject = {
+            //   id: project.length + 1,
+            //   projectName,
+            //   link,
+            //   twitterHandle,
+            //   isVerried: false,
+            // };
+            // setProject([...project, showCaseProject]);
+            toast({
+              description: "project added successfully",
+              status: "success",
+              duration: 1500,
+              isClosable: true,
+            });
+          }
+        });
+      project();
+    };
   };
   return (
     <>
@@ -177,14 +196,14 @@ const Homepage = () => {
         flexWrap={"wrap"}
         justify={"center"}
       >
-        {project.map((project, id) => (
+        {/* {project.map((project, id) => (
           <ProjectCard
             key={id}
             projectName={project.projectName}
             link={project.link}
             twitterHandle={project.twitterHandle}
           />
-        ))}
+        ))} */}
       </Flex>
       <Center pb={"30px"}>
         <Text>Proudly made with Chakra</Text>
