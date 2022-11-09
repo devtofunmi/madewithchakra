@@ -1,5 +1,6 @@
 import { Box, Button, Input, Textarea, Text, Flex } from "@chakra-ui/react";
 import React, { useState } from "react";
+import { useRef } from "react";
 import { MdOutlineClose } from "react-icons/md";
 
 const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
@@ -7,8 +8,14 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
   const [link, setLink] = useState("");
   const [twitterHandle, setTwitterHandle] = useState("");
 
+  const inputRef = useRef();
   const handleSubmit = () => {
-    addNewProject(projectName, link, twitterHandle);
+    if (addNewProject(projectName, link, twitterHandle)) {
+      setProjectName("");
+      setLink("");
+      setTwitterHandle("");
+      inputRef.current.value = "";
+    }
   };
 
   return (
@@ -66,6 +73,7 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               onChange={(e) => {
                 setProjectName(e.target.value);
               }}
+              ref={inputRef}
             />
             <Input
               mt={"15px"}
@@ -74,6 +82,7 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               onChange={(e) => {
                 setLink(e.target.value);
               }}
+              ref={inputRef}
             />
             <Input
               mt={"15px"}
@@ -82,6 +91,7 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               onChange={(e) => {
                 setTwitterHandle(e.target.value);
               }}
+              ref={inputRef}
             />
 
             <Button
