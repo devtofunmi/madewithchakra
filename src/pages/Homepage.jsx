@@ -74,7 +74,7 @@ const Homepage = () => {
     getProjects();
   }, []);
   return (
-    <>
+    <Box>
       <SubmitProject
         isOpen={showPopup}
         closePopup={closePopup}
@@ -167,7 +167,7 @@ const Homepage = () => {
       <Center pb={"30px"}>
         <Text>Proudly made with Chakra</Text>
       </Center>
-    </>
+    </Box>
   );
 };
 
