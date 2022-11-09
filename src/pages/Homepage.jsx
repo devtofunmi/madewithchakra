@@ -112,7 +112,7 @@ const Homepage = () => {
           textAlign={"center"}
           pt={"50px"}
           alignItems={"center"}
-          w={["80%", "60%"]}
+          w={["80%", "50%"]}
           m={"auto"}
         >
           <Text fontSize={"60px"} fontFamily={"Roboto"}>
