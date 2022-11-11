@@ -101,7 +101,7 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               onClick={() => {
                 handleSubmit();
               }}
-              // disabled={!projectName || !url || !description || twitterHandle}
+              disabled={!projectName || !link || !twitterHandle}
             >
               Submit
             </Button>
