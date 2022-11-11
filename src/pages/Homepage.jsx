@@ -58,6 +58,7 @@ const Homepage = () => {
               duration: 1500,
               isClosable: true,
             });
+            closePopup();
           }
         });
     };
