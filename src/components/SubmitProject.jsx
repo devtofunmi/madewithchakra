@@ -8,12 +8,8 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
 
   const inputRef = useRef();
   const handleSubmit = () => {
-    if (addNewProject(projectName, link, twitterHandle)) {
-      setProjectName("");
-      setLink("");
-      setTwitterHandle("");
-      inputRef.current.value = "";
-    }
+    addNewProject(projectName, link, twitterHandle);
+    inputRef.current.value = "";
   };
 
   return (
