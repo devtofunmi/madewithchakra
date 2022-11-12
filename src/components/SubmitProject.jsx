@@ -7,9 +7,13 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
   const [twitterHandle, setTwitterHandle] = useState("");
 
   const inputRef = useRef();
+  const projectRef = useRef();
+  const linkRef = useRef();
   const handleSubmit = () => {
     addNewProject(projectName, link, twitterHandle);
     inputRef.current.value = "";
+    projectRef.current.value = "";
+    linkRef.current.value = "";
   };
 
   return (
@@ -67,7 +71,7 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               onChange={(e) => {
                 setProjectName(e.target.value);
               }}
-              ref={inputRef}
+              ref={projectRef}
             />
             <Input
               mt={"15px"}
@@ -76,7 +80,7 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               onChange={(e) => {
                 setLink(e.target.value);
               }}
-              ref={inputRef}
+              ref={linkRef}
             />
             <Input
               mt={"15px"}
