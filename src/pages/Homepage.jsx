@@ -10,6 +10,7 @@ import {
   Img,
   Link,
   Tooltip,
+  Spinner,
 } from "@chakra-ui/react";
 import SubmitProject from "../components/SubmitProject";
 import ProjectCard from "../components/ProjectCard";
@@ -22,7 +23,7 @@ const Homepage = () => {
   const closePopup = () => {
     setShowPopup(false);
   };
-
+  const [loading, setLoading] = useState(true);
   const toast = useToast();
   const [projects, setProjects] = useState([]);
   const showError = (message) => {
@@ -69,6 +70,7 @@ const Homepage = () => {
     const data = await supabase.from("projects").select("*");
 
     setProjects(data?.data);
+    setLoading(false);
   };
 
   useEffect(() => {
@@ -147,24 +149,38 @@ const Homepage = () => {
         </Text>
       </Center>
 
-      <Flex
-        pb={"50px"}
-        mt={"10px"}
-        gap={"50px"}
-        flexWrap={"wrap"}
-        justify={"center"}
-      >
-        {projects
-          .filter((p) => p.isVerified)
-          .map((project) => (
-            <ProjectCard
-              key={project.id}
-              projectName={project.projectName}
-              link={project.link}
-              twitterHandle={project.twitterHandle}
+      <Box>
+        {loading ? (
+          <Center>
+            <Spinner
+              thickness="4px"
+              speed="0.65s"
+              emptyColor="gray.200"
+              color="teal"
+              size="lg"
             />
-          ))}
-      </Flex>
+          </Center>
+        ) : (
+          <Flex
+            pb={"50px"}
+            mt={"10px"}
+            gap={"50px"}
+            flexWrap={"wrap"}
+            justify={"center"}
+          >
+            {projects
+              .filter((p) => p.isVerified)
+              .map((project) => (
+                <ProjectCard
+                  key={project.id}
+                  projectName={project.projectName}
+                  link={project.link}
+                  twitterHandle={project.twitterHandle}
+                />
+              ))}
+          </Flex>
+        )}
+      </Box>
       <Center pb={"30px"}>
         <Text>Proudly made with Chakra</Text>
       </Center>
