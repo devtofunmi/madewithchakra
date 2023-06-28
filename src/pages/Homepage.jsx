@@ -35,11 +35,12 @@ const Homepage = () => {
     });
   };
 
-  const addNewProject = (projectName, link, twitterHandle) => {
+  const addNewProject = (projectName, link, twitterHandle, image) => {
     const project = async () => {
       await supabase
         .from("projects")
         .insert({
+          image: image,
           projectName: projectName,
           link: link,
           twitterHandle: twitterHandle,
@@ -113,7 +114,7 @@ const Homepage = () => {
           direction={"column"}
           justifyContent={"center"}
           textAlign={"center"}
-          pt={"80px"}
+          pt={["100px", "80px"]}
           alignItems={"center"}
           w={["90%", "80%", "50%"]}
           m={"auto"}
@@ -173,6 +174,7 @@ const Homepage = () => {
               .map((project) => (
                 <ProjectCard
                   key={project.id}
+                  image={project.image}
                   projectName={project.projectName}
                   link={project.link}
                   twitterHandle={project.twitterHandle}
