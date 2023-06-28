@@ -1,19 +1,110 @@
-import { Box, Button, Input, Textarea, Text, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Input,
+  Textarea,
+  Text,
+  Flex,
+  Alert,
+  Spinner,
+} from "@chakra-ui/react";
 import React, { useRef, useState } from "react";
+import { useEffect } from "react";
 import { MdOutlineClose } from "react-icons/md";
+import { supabase } from "../../supabaseClient";
+
 const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
   const [projectName, setProjectName] = useState("");
   const [link, setLink] = useState("");
+  const [image, setImage] = useState("");
   const [twitterHandle, setTwitterHandle] = useState("");
-
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
   const inputRef = useRef();
   const projectRef = useRef();
   const linkRef = useRef();
-  const handleSubmit = () => {
-    addNewProject(projectName, link, twitterHandle);
-    inputRef.current.value = "";
-    projectRef.current.value = "";
-    linkRef.current.value = "";
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+
+    reader.onloadend = () => {
+      setImage(reader.result); // Set the image URL to the result of FileReader
+      uploadToCloudinary(file); // Pass the file to the uploadToCloudinary function
+    };
+
+    reader.readAsDataURL(file);
+  };
+
+ 
+   const uploadToCloudinary = async (file) => {
+     const formData = new FormData();
+     formData.append("file", file);
+     formData.append("upload_preset", "users_avater");
+
+     try {
+       const response = await fetch(
+         "https://api.cloudinary.com/v1_1/drirsnp0c/image/upload",
+         {
+           method: "POST",
+           body: formData,
+         }
+       );
+
+       const data = await response.json();
+       console.log("Cloudinary upload response:", data);
+
+       if (response.ok) {
+         return data.secure_url; // Return the uploaded image URL
+       } else {
+         throw new Error(data.error.message);
+       }
+     } catch (error) {
+       console.error("Error uploading image to Cloudinary:", error);
+       throw error;
+     }
+   };
+
+  const handleSubmit = async () => {
+    setLoading(true);
+    setTimeout(async () => {
+      if (!projectName || !link || !twitterHandle || !image) {
+        setError("Please fill in all fields");
+      } else {
+        try {
+          const cloudinaryUrl = await uploadToCloudinary(image);
+
+          const { data: insertedData, error: insertError } = await supabase
+            .from("projects")
+            .insert({
+              projectName: projectName,
+              link: link,
+              twitterHandle: twitterHandle,
+              isVerified: false,
+              image: cloudinaryUrl,
+            });
+
+          if (insertError) {
+            setError(insertError.message);
+          } else {
+            setSuccess("Signup successful");
+            setTimeout(() => {
+              setSuccess("");
+            }, 2000);
+            setImage("");
+            setLink("");
+            setProjectName("");
+            setTwitterHandle("");
+          }
+        } catch (error) {
+          console.error("Error occurred during submission:", error);
+          setError("An error occurred during submission");
+        }
+      }
+
+      setLoading(false);
+    }, 1000);
   };
 
   return (
@@ -71,6 +162,7 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               onChange={(e) => {
                 setProjectName(e.target.value);
               }}
+              value={projectName}
               ref={projectRef}
             />
             <Input
@@ -80,6 +172,7 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               onChange={(e) => {
                 setLink(e.target.value);
               }}
+              value={link}
               ref={linkRef}
             />
             <Input
@@ -89,7 +182,17 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               onChange={(e) => {
                 setTwitterHandle(e.target.value);
               }}
+              value={twitterHandle}
               ref={inputRef}
+            />
+            <Input
+              fontSize="16px"
+              placeholder="Your Project Screenshot"
+              mt={"15px"}
+              w={["300px", "400px"]}
+              type="file"
+              onChange={(e) => handleImageUpload(e)}
+              
             />
 
             <Button
@@ -101,9 +204,9 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               onClick={() => {
                 handleSubmit();
               }}
-              disabled={!projectName || !link || !twitterHandle}
+              disabled={!projectName || !link || !twitterHandle || !image}
             >
-              Submit
+              {loading ? <Spinner /> : <p>Submit </p>}
             </Button>
           </Box>
         </Flex>
