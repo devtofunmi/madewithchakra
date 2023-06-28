@@ -1,8 +1,8 @@
-import { Box, Button, Link, Text } from "@chakra-ui/react";
+import { Box, Button, Img, Link, Text } from "@chakra-ui/react";
 import React from "react";
 import { BsTwitter } from "react-icons/bs";
 
-const ProjectCard = ({ projectName, link, twitterHandle }) => {
+const ProjectCard = ({ projectName, link, twitterHandle, image }) => {
   return (
     <Box
       width={["350px", "400px", "400px"]}
@@ -10,7 +10,7 @@ const ProjectCard = ({ projectName, link, twitterHandle }) => {
       position={"relative"}
     >
       <Box>
-        <iframe scrolling="no" height="200" width={"100%"} src={link}></iframe>
+        <Img height="200" width={"100%"} src={image}></Img>
       </Box>
       <Box
         position={"absolute"}
