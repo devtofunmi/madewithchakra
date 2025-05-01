@@ -81,14 +81,15 @@ const Homepage = () => {
         addNewProject={addNewProject}
       />
 
-      <Flex justify="space-between" align="center" px="6" py="2" bg="#1e1e1e" boxShadow="sm">
-        <Img w="160px" src={logo} />
+      <Flex justify="space-between" align="center" px={{ base: 6, md: 20 }} py="2">
+        <Img w="160px"  src={logo} />
         <Tooltip label="Follow @madewithchakra on Twitter" fontSize="sm">
-          <Link href="https://twitter.com/madewithchakra" target="_blank" fontSize="28px">
-            <AiFillTwitterCircle color="#1DA1F2" />
-          </Link>
+      <Link href="https://twitter.com/madewithchakra" target="_blank" fontSize="28px">
+      <AiFillTwitterCircle color="#1DA1F2" />
+      </Link>
         </Tooltip>
       </Flex>
+
 
       <Box textAlign="center" mt="60px" px="4">
         <Text fontSize="42px" fontWeight="bold" color="white">
