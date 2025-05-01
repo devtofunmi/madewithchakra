@@ -12,6 +12,7 @@
     "@chakra-ui/react": "^2.3.6",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/inter": "^5.2.5",
     "@supabase/supabase-js": "^2.0.5",
     "cloudinary": "^1.37.3",
     "framer-motion": "^7.6.3",
