@@ -140,9 +140,9 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               Add Project
             </Text>
             <Button
-              bg={"teal"}
+              bgGradient="linear(to-r, teal.400, blue.500)"
               _hover={{
-                backgroundColor: "rgba(#181819, 0.2)",
+                bgGradient: "linear(to-r, teal.500, blue.600)",
               }}
               size={"sm"}
               cursor={"pointer"}
@@ -195,19 +195,19 @@ const SubmitProject = ({ isOpen, closePopup, addNewProject }) => {
               
             />
 
-            <Button
-              mt={"20px"}
-              bg={"teal"}
-              _hover={{
-                backgroundColor: "rgba(#181819, 0.2)",
-              }}
-              onClick={() => {
-                handleSubmit();
-              }}
-              disabled={!projectName || !link || !twitterHandle || !image}
-            >
-              {loading ? <Spinner /> : <p>Submit </p>}
-            </Button>
+          <Button
+            mt={"20px"}
+            bgGradient="linear(to-r, teal.400, blue.500)"
+            _hover={{
+              bgGradient: "linear(to-r, teal.500, blue.600)",
+            }}
+            color="white"
+            onClick={handleSubmit}
+            disabled={!projectName || !link || !twitterHandle || !image}
+          >
+  {loading ? <Spinner /> : <Text>Submit</Text>}
+</Button>
+
           </Box>
         </Flex>
       </Box>

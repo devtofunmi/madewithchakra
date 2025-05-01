@@ -1,3 +1,4 @@
+// Homepage.jsx or Homepage.tsx
 import React, { useEffect, useState } from "react";
 import { GiLoveMystery } from "react-icons/gi";
 import {
@@ -20,12 +21,11 @@ import { supabase } from "../../supabaseClient";
 
 const Homepage = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const closePopup = () => {
-    setShowPopup(false);
-  };
+  const closePopup = () => setShowPopup(false);
   const [loading, setLoading] = useState(true);
   const toast = useToast();
   const [projects, setProjects] = useState([]);
+
   const showError = (message) => {
     toast({
       description: message,
@@ -40,28 +40,24 @@ const Homepage = () => {
       await supabase
         .from("projects")
         .insert({
-          image: image,
-          projectName: projectName,
-          link: link,
-          twitterHandle: twitterHandle,
+          image,
+          projectName,
+          link,
+          twitterHandle,
           isVerified: false,
         })
         .then((data) => {
-          if (!projectName) {
-            showError("enter project name");
-          } else if (!link) {
-            showError("enter project url");
-          } else if (data.error) {
-            showError(data.error.message);
-          } else {
-            toast({
-              description: "project added successfully",
-              status: "success",
-              duration: 1500,
-              isClosable: true,
-            });
-            closePopup();
-          }
+          if (!projectName) return showError("Enter project name");
+          if (!link) return showError("Enter project URL");
+          if (data.error) return showError(data.error.message);
+
+          toast({
+            description: "Project added successfully",
+            status: "success",
+            duration: 1500,
+            isClosable: true,
+          });
+          closePopup();
         });
     };
     project();
@@ -69,106 +65,66 @@ const Homepage = () => {
 
   const getProjects = async () => {
     const data = await supabase.from("projects").select("*");
-
-    setProjects(data?.data);
+    setProjects(data?.data || []);
     setLoading(false);
   };
 
   useEffect(() => {
     getProjects();
   }, []);
+
   return (
-    <Box>
+    <Box fontFamily="'Segoe UI', sans-serif" bg="#121212" color="gray.100" minH="100vh">
       <SubmitProject
         isOpen={showPopup}
         closePopup={closePopup}
         addNewProject={addNewProject}
       />
-      <Box h={"100vh"}>
-        <Flex
-          justifyContent={"space-between"}
-          alignItems={"center"}
-          mx={"20px"}
+
+      <Flex justify="space-between" align="center" px="6" py="2" bg="#1e1e1e" boxShadow="sm">
+        <Img w="160px" src={logo} />
+        <Tooltip label="Follow @madewithchakra on Twitter" fontSize="sm">
+          <Link href="https://twitter.com/madewithchakra" target="_blank" fontSize="28px">
+            <AiFillTwitterCircle color="#1DA1F2" />
+          </Link>
+        </Tooltip>
+      </Flex>
+
+      <Box textAlign="center" mt="60px" px="4">
+        <Text fontSize="42px" fontWeight="bold" color="white">
+          Showcase Your Chakra UI Projects
+        </Text>
+        <Text mt="4" fontSize="18px" color="gray.400" maxW="600px" mx="auto">
+          Explore what others built with Chakra UI and submit your own project
+          to get featured.
+        </Text>
+        <Button
+          mt="6"
+          px="8"
+          py="6"
+          bgGradient="linear(to-r, teal.400, blue.500)"
+          _hover={{ bgGradient: "linear(to-r, teal.500, blue.600)" }}
+          color="white"
+          borderRadius="lg"
+          onClick={() => setShowPopup(true)}
         >
-          <Box>
-            <Img w={"300px"} src={logo} />
-          </Box>
-          <Box>
-            <Tooltip
-              label="follow madewithchakra on twitter"
-              aria-label="A tooltip"
-              fontSize="md"
-            >
-              <Link
-                fontSize={"30px"}
-                href={"https://twitter.com/madewithchakra"}
-                target={"_blank"}
-                textDecor={"none"}
-              >
-                <AiFillTwitterCircle />
-              </Link>
-            </Tooltip>
-          </Box>
-        </Flex>
-        <Box
-          direction={"column"}
-          justifyContent={"center"}
-          textAlign={"center"}
-          pt={["100px", "80px"]}
-          alignItems={"center"}
-          w={["90%", "80%", "50%"]}
-          m={"auto"}
-        >
-          <Text fontSize={"60px"} fontFamily={"Roboto"}>
-            Showcase your Projects made with Chakra-ui
-          </Text>
-          {/* <Text mt={["15px", "20px"]}>
-            Chakra UI is a simple, modular and accessible component library that
-            gives you the building blocks you need to build your React
-            applications,with madewithchakra, you can showcase your project and
-            explore what's possible with Chakra_ui and get inspired for your
-            next project.
-          </Text> */}
-          <Button
-            borderRadius={"10px"}
-            mt={"20px"}
-            color={"white"}
-            p={"30px"}
-            bg={"teal"}
-            _hover={{
-              bg: "#4cbf87",
-            }}
-            onClick={() => setShowPopup(true)}
-          >
-            Submit Projects
-          </Button>
-        </Box>
+          Submit Your Project
+        </Button>
       </Box>
-      <Center mt={["20px", "200px", "0px"]}>
-        <Text fontSize={"60px"} fontFamily={"Roboto"}>
-          Project
+
+      <Center mt="100px">
+        <Text fontSize="32px" fontWeight="semibold" color="white">
+          Featured Projects
         </Text>
       </Center>
 
-      <Box>
+      <Box mt="8" px="4">
         {loading ? (
-          <Center>
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="gray.200"
-              color="teal"
-              size="lg"
-            />
+          <Center py="40px">
+            <Spinner size="xl" color="teal.300" />
           </Center>
         ) : (
-          <Flex
-            pb={"50px"}
-            mt={"10px"}
-            gap={"50px"}
-            flexWrap={"wrap"}
-            justify={"center"}
-          >
+          <Flex wrap="wrap" justify="center" gap="40px" pb="60px">
             {projects
               .filter((p) => p.isVerified)
               .map((project) => (
@@ -183,11 +139,15 @@ const Homepage = () => {
           </Flex>
         )}
       </Box>
-      <Center pb={"30px"}>
-        <Text>Proudly made with Chakra</Text>
+
+      <Center py="8">
+        <Text color="gray.500" fontSize="sm">
+          Proudly made with Chakra UI ❤️
+        </Text>
       </Center>
     </Box>
   );
 };
 
 export default Homepage;
+
